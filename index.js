@@ -101,7 +101,7 @@ app.post("/add-member-to-organisation", authMiddleware, async(req, res) => {
     }
     const newMember = await orgModel.findByIdAndUpdate(organisation._id,{
         $push: {
-            members: { userId: memberUser._id}
+            members: memberUser._id
         }
     }
     )
@@ -114,10 +114,9 @@ app.post("/add-member-to-organisation", authMiddleware, async(req, res) => {
 app.get("/organisation", authMiddleware, async (req, res) => {
     const userId = req.userId;
     
-    const organisation = await orgModel.findOne({
-        admin: userId
-    }).populate("members", "username");
-
+    const organisation = await orgModel.findOne({admin: userId})
+        .populate('members', 'username')
+        .populate('admin', 'username');
     if(!organisation){
         res.status(411).json({
             message: "Either this organsisation doesnot exists or you are not an admin of this organisation"

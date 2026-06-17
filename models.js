@@ -14,14 +14,12 @@ const OrgSchema = new Schema({
     title: String,
     description: String,
     admin: {
-        type: Schema.Types.ObjectId,
-        ref: "user",
-        require: true
+        type: mongoose.Types.ObjectId,
+        ref: "user"
     },
     members: [{
-    type: Schema.Types.ObjectId,
-    ref: "user",
-    required: true
+        type: mongoose.Types.ObjectId,
+        ref: "user"
     }]
 })
 
