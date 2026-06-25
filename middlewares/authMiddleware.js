@@ -1,5 +1,5 @@
 const JWT =  require("jsonwebtoken")
-require("dotenv");
+require("dotenv").config();
 
 function authMiddleware(req, res, next){
     const token = req.headers.token;
