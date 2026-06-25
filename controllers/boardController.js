@@ -1,6 +1,5 @@
-const {userModel} = require("../models/userModel")
-const {orgModel} = require("../models/orgModel")
-const {boardModel} = require("../models/boardModel")
+const {userModel, orgModel, boardModel} = require("../models/models")
+
 const bcrypt = require("bcrypt")
 
 const {AddMemberSchema, BoardSchema} = require("../schemas/schemas")

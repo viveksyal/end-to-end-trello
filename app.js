@@ -2,19 +2,15 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 const { authMiddleware } = require("./middlewares/authMiddleware")
+const mongoose = require("mongoose");
 
 mongoose.connect(process.env.DB_STRING)
-
-const { orgModel } = require("./models/orgModel")
-const { boardModel } = require("./models/boardModel")
 
 const {signup, signin} = require("./controllers/userController");
 const { organisation, addOrganisation, getOrganisation } = require("./controllers/orgController");
 const { board, addBoard, getBoard } = require("./controllers/boardController");
-const { default: mongoose } = require("mongoose");
 
-app.use(express.json());
-
+app.use(express.json())
 
 app.post("/signup", signup)
 
